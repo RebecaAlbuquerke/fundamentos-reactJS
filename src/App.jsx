@@ -6,6 +6,41 @@ import styles from './App.module.css';
 
 import './global.css';
 
+// author: { avatar_url: "", name: "", role: "" }
+// publishedAt: Date
+// cotent:string
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/rebecaalbuquerke.png',
+      name: 'Rebeca Albuquerque',
+      role: 'CTO @Rocketseat'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2022-05-03 20:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/maykbrito.png',
+      name: 'Mayk Brito',
+      role: 'Educator @Rocketseat'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      {type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2022-05-10 20:00:00')
+  }
+]
+
 export function App() {
   return (  
     <div>
@@ -14,11 +49,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Rebeca Albuquerque"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, soluta dolorum. Nobis saepe fugit commodi molestias eius magnam facere veritatis mollitia architecto? Ducimus enim accusamus labore. Hic cum delectus sequi."
-          />
-          <Post />
+          {posts.map(post => {
+            return (
+              <Post 
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
